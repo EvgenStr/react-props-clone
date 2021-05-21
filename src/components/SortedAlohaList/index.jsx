@@ -23,7 +23,7 @@ class SortedAlohaList extends Component {
     const { users, deleteUser } = this.props;
     return (
       <>
-        <AlohaList users={users}  deleteUser={deleteUser} />
+        <AlohaList users={users} deleteUser={deleteUser} />
         <button onClick={this.sortUsers}>Change Sort Type</button>
       </>
     );
