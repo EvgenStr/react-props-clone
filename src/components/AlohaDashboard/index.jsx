@@ -1,5 +1,5 @@
 import { Component } from "react";
-import SortedAlohaList from "../SortedAlohaList";
+import SortedAlohaList from "./SortedAlohaList";
 
 class AlohaDashboard extends Component {
   constructor(props) {
