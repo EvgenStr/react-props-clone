@@ -14,8 +14,8 @@ class Aloha extends Component {
     });
   };
   deleteUser = () => {
-    const { users, id, deleteUser } = this.props;
-    deleteUser(users.filter((user) => user.id !== id));
+    const { users, id, setUsers } = this.props;
+    setUsers(users.filter((user) => user.id !== id));
   };
   render() {
     const { name = "React" } = this.props;

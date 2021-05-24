@@ -35,21 +35,12 @@ class AlohaDashboard extends Component {
       users,
     });
   };
-  deleteUser = (users) => {
-    this.setState({
-      users,
-    });
-  };
 
   render() {
     const { users } = this.state;
     return (
       <>
-        <SortedAlohaList
-          users={users}
-          setUsers={this.setUsers}
-          deleteUser={this.deleteUser}
-        />
+        <SortedAlohaList users={users} setUsers={this.setUsers} />
       </>
     );
   }
