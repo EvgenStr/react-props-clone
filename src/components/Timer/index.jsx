@@ -4,31 +4,82 @@ import Controls from "./Controls";
 import TimerDisplay from "./TimerDisplay";
 import style from './Timer.module.css';
 
-import React from 'react'
 
 export default function Timer() {
-const [isRunning, setIsRuning] = useState(false);
 
+  const [isRunning, setIsRunning] = useState(false);
+  const [startTime, setStartTime] = useState(null);
+  const [diff, setDiff] = useState(null);
+  const [currentTime, setCurrentTime] = useState("00:00:00.000");
+  const [startButton, setStartButton] = useState({
+    caption: "Start",
+    isHidden: false,
+    handler: this.start,
+  });
+  const [pauseButton, setPauseButton] = useState({
+    caption: "Pause",
+    isHidden: true,
+    handler: this.pause,
+  });
 
-    return (
-      <article className={style.container}>
-        <h2>{name}</h2>
-        <TimerDisplay currentTime={currentTime} />
-        <Controls>
-          <Button handler={startButton.handler} caption={startButton.caption} />
-          {!pauseButton.isHidden && (
-            <Button
-              handler={pauseButton.handler}
-              caption={pauseButton.caption}
-            />
-          )}
-        </Controls>
-      </article>
+  const msToTime = (duration = 0) => {
+    const getCorrectTimeString = (v) => (v < 10 ? `0${v}` : v);
+    const seconds = getCorrectTimeString(((duration / 1000) % 60).toFixed(3));
+    const minutes = getCorrectTimeString(
+      Math.trunc((duration / (1000 * 60)) % 60)
     );
-  
+    const hours = getCorrectTimeString(Math.trunc(duration / (1000 * 60 * 60)));
+    return `${hours}:${minutes}:${seconds}`;
+  }
+  const tick = () => {
+    if (!isRunning) return;
+    setTimeout(tick, 10);
+    setCurrentTime(msToTime(Date.now() - startTime))
+  };
+
+ const start = () => {
+    if (isRunning || startTime) return;
+    setIsRunning(true);
+    setStartTime(Date.now());
+    setStartButton({
+      caption: "Reset",
+      isHidden: false,
+      handler: this.reset,
+    });
+    this.setState({
+      isRunning: true,
+      startTime: Date.now(),
+      startButton: {
+        caption: "Reset",
+        isHidden: false,
+        handler: this.reset,
+      },
+      pauseButton: {
+        caption: "Pause",
+        isHidden: false,
+        handler: this.pause,
+      },
+    });
+    setTimeout(this.tick, 10);
+  };
+
+  return (
+    <article className={style.container}>
+      <h2>{name}</h2>
+      <TimerDisplay currentTime={currentTime} />
+      <Controls>
+        <Button handler={startButton.handler} caption={startButton.caption} />
+        {!pauseButton.isHidden && (
+          <Button
+            handler={pauseButton.handler}
+            caption={pauseButton.caption}
+          />
+        )}
+      </Controls>
+    </article>
+  );
+
 }
-
-
 class Timer extends Component {
   constructor(props) {
     super(props);
