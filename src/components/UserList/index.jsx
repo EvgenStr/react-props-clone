@@ -3,15 +3,15 @@ import UserCard from "./UserCard";
 import style from './UserList.module.css';
 
 class UserList extends Component {
-  componentDidMount() {
-    console.log("Did mount");
-  }
-  componentDidUpdate() {
-    console.log("Did update");
-  }
-  componentWillUnmount() {
-    console.log("Will unmount");
-  }
+  // componentDidMount() {
+  //   console.log("Did mount");
+  // }
+  // componentDidUpdate() {
+  //   console.log("Did update");
+  // }
+  // componentWillUnmount() {
+  //   console.log("Will unmount");
+  // }
   toggleUserSelection = (id) => {
     const { users, setUsers } = this.props;
 

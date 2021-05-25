@@ -43,7 +43,7 @@ function Timer(props) {
       handler: pause,
     })
     console.log("start", isRunning);
-    setTimeout(tick, 1000);
+    setTimeout(tick, 5000);
   };
 
   const pause = () => {
