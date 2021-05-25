@@ -1,9 +1,33 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Button from "../Button";
 import Controls from "./Controls";
 import TimerDisplay from "./TimerDisplay";
 import style from './Timer.module.css';
-console.log(style);
+
+import React from 'react'
+
+export default function Timer() {
+const [isRunning, setIsRuning] = useState(false);
+
+
+    return (
+      <article className={style.container}>
+        <h2>{name}</h2>
+        <TimerDisplay currentTime={currentTime} />
+        <Controls>
+          <Button handler={startButton.handler} caption={startButton.caption} />
+          {!pauseButton.isHidden && (
+            <Button
+              handler={pauseButton.handler}
+              caption={pauseButton.caption}
+            />
+          )}
+        </Controls>
+      </article>
+    );
+  
+}
+
 
 class Timer extends Component {
   constructor(props) {
