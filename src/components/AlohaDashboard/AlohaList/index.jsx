@@ -1,15 +1,11 @@
 import Aloha from "../Aloha";
 
-function AlohaList({ users, setUsers }) {
+function AlohaList({ users }) {
+  
   const createUserGreetings = (users) =>
-    users.map(({ id, firstname, lastname }, index) => (
+    users.map(({id, firstname, lastname }, index) => (
       <li key={id}>
-        <Aloha
-          name={`${firstname} ${lastname}`}
-          setUsers={setUsers}
-          users={users}
-          id={id}
-        />
+        <Aloha name={`${firstname} ${lastname}`} />
       </li>
     ));
 
