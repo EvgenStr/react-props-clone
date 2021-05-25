@@ -37,7 +37,7 @@ export default function Timer() {
     setCurrentTime(msToTime(Date.now() - startTime))
   };
 
- const start = () => {
+  const start = () => {
     if (isRunning || startTime) return;
     setIsRunning(true);
     setStartTime(Date.now());
@@ -46,21 +46,22 @@ export default function Timer() {
       isHidden: false,
       handler: this.reset,
     });
-    this.setState({
-      isRunning: true,
-      startTime: Date.now(),
-      startButton: {
-        caption: "Reset",
-        isHidden: false,
-        handler: this.reset,
-      },
-      pauseButton: {
-        caption: "Pause",
-        isHidden: false,
-        handler: this.pause,
-      },
+    setPauseButton({
+      caption: "Pause",
+      isHidden: false,
+      handler: this.pause,
+    })
+    setTimeout(tick, 10);
+  };
+
+  const pause = () => {
+    setIsRunning(false);
+    setDiff(Date.now() - startTime);
+    setPauseButton({
+      caption: "Resume",
+      isHidden: false,
+      handler: this.resume,
     });
-    setTimeout(this.tick, 10);
   };
 
   return (
