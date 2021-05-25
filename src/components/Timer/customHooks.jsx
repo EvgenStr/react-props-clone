@@ -27,7 +27,7 @@ const useTimer = () => {
   }
 
   const tick = () => {
-    setCurrentTime(msToTime(Date.now() - startTime));
+    setCurrentTime(msToTime(Date.now() - startTime ));
   };
 
   const start = () => {
@@ -58,6 +58,11 @@ const useTimer = () => {
     });
     console.log("pause2", diff)
   };
+
+  // useEffect(() => {
+  //   console.log('Do something after diff has changed', diff, startTime);
+  //   setDiff(diff);
+  // }, [diff, startTime]);
 
   const resume = () => {
     setIsRunning(true);
