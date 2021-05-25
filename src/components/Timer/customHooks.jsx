@@ -1,4 +1,4 @@
-import { useState, useEffect, useReducer } from 'react';
+import { useState, useEffect } from 'react';
 
 const useTimer = () => {
   const [isRunning, setIsRunning] = useState(false);
@@ -6,9 +6,10 @@ const useTimer = () => {
   const [diff, setDiff] = useState(null);
   const [currentTime, setCurrentTime] = useState("00:00:00.000");
   useEffect(() => {
+    console.log("effect", diff, startTime);
     let interval = null;
     if (isRunning) {
-      console.log("diff", diff)
+      // setStartTime(startTime - diff);
       interval = setInterval(tick, 10);
     } else if (!isRunning && !startTime) {
       setCurrentTime(msToTime(0));
@@ -24,19 +25,9 @@ const useTimer = () => {
     const hours = getCorrectTimeString(Math.trunc(duration / (1000 * 60 * 60)));
     return `${hours}:${minutes}:${seconds}`;
   }
-  useEffect(() => {
-    let interval = null;
-    if (isRunning) {
-      console.log("diff", diff)
-      interval = setInterval(tick, 10);
-    } else if (!isRunning && !startTime) {
-      setCurrentTime(msToTime(0));
-    }
-    return () => clearInterval(interval);
-  }, [isRunning, startTime, currentTime, diff]);
 
   const tick = () => {
-    setCurrentTime(msToTime((Date.now() - startTime) - diff));
+    setCurrentTime(msToTime(Date.now() - startTime));
   };
 
   const start = () => {
@@ -115,7 +106,6 @@ const useTimer = () => {
     pause: () => pause(),
     reset: () => reset(),
     resume: () => resume(),
-
   }
 }
 export default useTimer;
