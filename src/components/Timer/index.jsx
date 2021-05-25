@@ -44,12 +44,12 @@ export default function Timer() {
     setStartButton({
       caption: "Reset",
       isHidden: false,
-      handler: this.reset,
+      handler: reset,
     });
     setPauseButton({
       caption: "Pause",
       isHidden: false,
-      handler: this.pause,
+      handler: pause,
     })
     setTimeout(tick, 10);
   };
@@ -60,10 +60,25 @@ export default function Timer() {
     setPauseButton({
       caption: "Resume",
       isHidden: false,
-      handler: this.resume,
+      handler: resume,
     });
   };
-
+  const reset = () => {
+    setIsRunning(false);
+    setCurrentTime(msToTime(0));
+    setStartTime(null);
+    setDiff(null);
+    setStartButton({
+      caption: "Start",
+      isHidden: false,
+      handler: start,
+    });
+    setPauseButton({
+      caption: "Pause",
+      isHidden: true,
+      handler: pause,
+    });
+  };
   return (
     <article className={style.container}>
       <h2>{name}</h2>
