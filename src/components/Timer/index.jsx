@@ -5,8 +5,8 @@ import TimerDisplay from "./TimerDisplay";
 import style from './Timer.module.css';
 
 
-export default function Timer() {
-
+export default function Timer(props) {
+  const { name = "Timer" } = props;
   const [isRunning, setIsRunning] = useState(false);
   const [startTime, setStartTime] = useState(null);
   const [diff, setDiff] = useState(null);
@@ -63,6 +63,7 @@ export default function Timer() {
       handler: resume,
     });
   };
+  
   const reset = () => {
     setIsRunning(false);
     setCurrentTime(msToTime(0));
@@ -78,6 +79,17 @@ export default function Timer() {
       isHidden: true,
       handler: pause,
     });
+  };
+
+  const resume = () => {
+    setIsRunning(true);
+    setStartTime(Date.now() - diff);
+    setPauseButton({
+      caption: "Pause",
+      isHidden: false,
+      handler: pause,
+    });
+    setTimeout(this.tick, 10);
   };
   return (
     <article className={style.container}>
