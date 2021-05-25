@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../Button";
 import Controls from "./Controls";
 import TimerDisplay from "./TimerDisplay";
@@ -21,10 +21,18 @@ function Timer(props) {
     const hours = getCorrectTimeString(Math.trunc(duration / (1000 * 60 * 60)));
     return `${hours}:${minutes}:${seconds}`;
   }
+  useEffect(() => {
+    let interval = null;
+    if (isRunning) {
+      console.log("diff", diff)
+      interval = setInterval(tick, 10);
+    } else if (!isRunning && !startTime) {
+      setCurrentTime(msToTime(0));
+    }
+    return () => clearInterval(interval);
+  }, [isRunning, startTime, currentTime, diff]);
+  
   const tick = () => {
-    console.log("tick", isRunning)
-    if (!isRunning) return;
-    setTimeout(tick, 10);
     setCurrentTime(msToTime(Date.now() - startTime));
   };
 
@@ -42,11 +50,11 @@ function Timer(props) {
       isHidden: false,
       handler: pause,
     })
-    console.log("start", isRunning);
-    setTimeout(tick, 5000);
+    setTimeout(tick, 10);
   };
 
   const pause = () => {
+    console.log("pause1", diff)
     setIsRunning(false);
     setDiff(Date.now() - startTime);
     setPauseButton({
@@ -54,6 +62,19 @@ function Timer(props) {
       isHidden: false,
       handler: resume,
     });
+    console.log("pause2", diff)
+  };
+
+  const resume = () => {
+    setIsRunning(true);
+    setStartTime(Date.now() - diff);
+    console.log("resume", diff)
+    setPauseButton({
+      caption: "Pause",
+      isHidden: false,
+      handler: pause,
+    });
+    setTimeout(tick, 10);
   };
 
   const reset = () => {
@@ -71,17 +92,6 @@ function Timer(props) {
       isHidden: true,
       handler: pause,
     });
-  };
-
-  const resume = () => {
-    setIsRunning(true);
-    setStartTime(Date.now() - diff);
-    setPauseButton({
-      caption: "Pause",
-      isHidden: false,
-      handler: pause,
-    });
-    setTimeout(tick, 10);
   };
 
   const [startButton, setStartButton] = useState({
