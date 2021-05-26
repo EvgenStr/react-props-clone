@@ -24,7 +24,6 @@ function Timer(props) {
       </Controls>
     </article>
   );
-
 }
 
 export default Timer;
