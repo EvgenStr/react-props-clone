@@ -27,12 +27,6 @@ const usersDB = [
   },
 ];
 
-/*function App() {
-  return (
-    <UserList />
-  )
-}*/
-
 function App(props) {
   const defaultUsers = usersDB.map((user) => ({
     ...user,

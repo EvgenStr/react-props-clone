@@ -60,11 +60,9 @@ const useTimer = () => {
       isHidden: false,
       handler: pause,
     })
-    // setTimeout(tick, 10);
   };
 
   const pause = () => {
-    // console.log("pause1", diff, startTime)
     setIsRunning(false);
     setDiff(Date.now() - startTime);
     setPauseButton({
@@ -72,7 +70,6 @@ const useTimer = () => {
       isHidden: false,
       handler: resume,
     });
-    // console.log("pause2", diff)
   };
 
   const resume = () => {
@@ -84,7 +81,6 @@ const useTimer = () => {
       isHidden: false,
       handler: pause,
     });
-    // setTimeout(tick, 10);
   };
 
   const reset = () => {
