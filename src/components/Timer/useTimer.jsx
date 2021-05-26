@@ -6,16 +6,32 @@ const useTimer = () => {
   const [diff, setDiff] = useState(null);
   const [currentTime, setCurrentTime] = useState("00:00:00.000");
   useEffect(() => {
-    console.log("effect", diff, startTime);
     let interval = null;
     if (isRunning) {
-      // setStartTime(startTime - diff);
       interval = setInterval(tick, 10);
     } else if (!isRunning && !startTime) {
       setCurrentTime(msToTime(0));
     }
     return () => clearInterval(interval);
-  }, [isRunning, startTime, currentTime, diff]);
+  }, [isRunning, startTime, currentTime]);
+  useEffect(() => {
+    if (startTime) {
+      if (!isRunning && diff) {
+        setPauseButton({
+          caption: "Resume",
+          isHidden: false,
+          handler: resume,
+        });
+      } else {
+        setPauseButton({
+          ...pauseButton,
+          caption: "Pause",
+          handler: pause,
+        });
+      }
+    }
+  }, [isRunning, startTime, diff]);
+
   const msToTime = (duration = 0) => {
     const getCorrectTimeString = (v) => (v < 10 ? `0${v}` : v);
     const seconds = getCorrectTimeString(((duration / 1000) % 60).toFixed(3));
@@ -27,7 +43,7 @@ const useTimer = () => {
   }
 
   const tick = () => {
-    setCurrentTime(msToTime(Date.now() - startTime ));
+    setCurrentTime(msToTime(Date.now() - startTime));
   };
 
   const start = () => {
@@ -44,11 +60,11 @@ const useTimer = () => {
       isHidden: false,
       handler: pause,
     })
-    setTimeout(tick, 10);
+    // setTimeout(tick, 10);
   };
 
   const pause = () => {
-    console.log("pause1", diff, startTime)
+    // console.log("pause1", diff, startTime)
     setIsRunning(false);
     setDiff(Date.now() - startTime);
     setPauseButton({
@@ -56,13 +72,8 @@ const useTimer = () => {
       isHidden: false,
       handler: resume,
     });
-    console.log("pause2", diff)
+    // console.log("pause2", diff)
   };
-
-  // useEffect(() => {
-  //   console.log('Do something after diff has changed', diff, startTime);
-  //   setDiff(diff);
-  // }, [diff, startTime]);
 
   const resume = () => {
     setIsRunning(true);
@@ -73,7 +84,7 @@ const useTimer = () => {
       isHidden: false,
       handler: pause,
     });
-    setTimeout(tick, 10);
+    // setTimeout(tick, 10);
   };
 
   const reset = () => {

@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../Button";
 import Controls from "./Controls";
 import TimerDisplay from "./TimerDisplay";
-import useTimer from "./customHooks"
+import useTimer from "./useTimer"
 import style from './Timer.module.css';
 
 
