@@ -1,4 +1,10 @@
 @import "../../../common/templates.scss";
 .autoControls {
   @extend %flex-column;
+  span {
+    font-family: "Press Start 2P", cursive;
+    font-size: 14px;
+    font-weight: bolder;
+    margin: 15px 0px;
+  }
 }

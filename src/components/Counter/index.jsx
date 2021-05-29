@@ -22,7 +22,7 @@ function Counter() {
       interval = setInterval(autoClick, 1000 / frequency);
     };
     return () => { clearInterval(interval) };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuto, counter, frequency]);
 
   return (
