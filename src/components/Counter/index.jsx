@@ -28,7 +28,7 @@ function Counter() {
   return (
     <div className={style.counter}>
       <Display counter={counter} />
-      <StepControls setSteps={setStep} propStep={step} setDirection={setIncrement} direction={isIncrement} />
+      <StepControls setStep={setStep} step={step} setDirection={setIncrement} isIncrement={isIncrement} />
       <Button handler={() => { setCounter(counter + (isIncrement ? step : -step)) }} text="Count" />
       <AutoControls handler={() => { setIsAuto(!isAuto) }} text={(isAuto ? 'stop' : 'start') + ' auto click'} setFrequency={setFrequency} frequency={frequency} />
     </div>

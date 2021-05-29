@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Button({ handler, text }) {
   return (
@@ -6,3 +7,8 @@ function Button({ handler, text }) {
   );
 };
 export default Button;
+
+Button.propTypes = {
+  handler: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+};

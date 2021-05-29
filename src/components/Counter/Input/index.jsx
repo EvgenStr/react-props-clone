@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Input({ handler, value }) {
   return (
@@ -8,3 +9,12 @@ function Input({ handler, value }) {
   );
 };
 export default Input;
+
+Input.defaultProps = {
+  value: 1,
+};
+
+Input.propTypes = {
+  handler: PropTypes.func.isRequired,
+  value: PropTypes.number.isRequired,
+};

@@ -31,5 +31,4 @@ AutoControls.propTypes = {
   text: PropTypes.string.isRequired,
   setFrequency: PropTypes.func.isRequired,
   frequency: PropTypes.number.isRequired,
-
 };

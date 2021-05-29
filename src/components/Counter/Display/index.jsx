@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Display({ counter }) {
   return (
@@ -6,3 +7,11 @@ function Display({ counter }) {
   );
 };
 export default Display;
+
+Display.defaultProps = {
+  counter: 0,
+};
+
+Display.propTypes = {
+  counter: PropTypes.number,
+};
