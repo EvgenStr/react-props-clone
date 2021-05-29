@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '../Button';
 import Input from '../Input';
 
@@ -10,7 +11,7 @@ function AutoControls({ handler, text, setFrequency, frequency }) {
     if (+value < minFrequency || +value > maxFrequency) return;
     setFrequency(+value);
   };
-  
+
   return (
     <div>
       <span>Set frequency from {minFrequency} to {maxFrequency}</span>
@@ -20,3 +21,15 @@ function AutoControls({ handler, text, setFrequency, frequency }) {
   );
 };
 export default AutoControls;
+
+AutoControls.defaultProps = {
+  frequency: 1,
+};
+
+AutoControls.propTypes = {
+  handler: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+  setFrequency: PropTypes.func.isRequired,
+  frequency: PropTypes.number.isRequired,
+
+};
