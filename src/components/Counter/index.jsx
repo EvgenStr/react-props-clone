@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Controls from "./Controls";
+import Button from "./Button";
 import style from "./Counter.module.scss";
 
 function Counter() {
@@ -23,9 +24,8 @@ function Counter() {
     <div className={style.counter}>
       <h1>Counter: {counter}</h1>
       <Controls setSteps={setStep} propStep={step} setDirection={setIncrement} direction={isIncrement} />
-      <button onClick={() => { setCounter(counter + (isIncrement ? step : -step)) }}> Count</button>
-      <button onClick={() => { setIsAuto(!isAuto) }}> {isAuto && 'stop '}auto click </button>
-
+      <Button  handler={() => { setCounter(counter + (isIncrement ? step : -step)) }} text="Count"/>
+      <Button  handler={() => { setIsAuto(!isAuto) }} text={`${isAuto && 'stop' } auto click`}/>
     </div>
   )
 }

@@ -1,10 +1,10 @@
 import React from 'react'
 
-function Button() {
+function Display() {
   return (
     <div>
 
     </div>
   )
 }
-export default Button;
+export default Display;
