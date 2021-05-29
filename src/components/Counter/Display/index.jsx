@@ -1,10 +1,8 @@
 import React from 'react'
 
-function Display() {
+function Display({ counter }) {
   return (
-    <div>
-
-    </div>
+    <div>Counter: {counter}</div>
   )
 }
 export default Display;
