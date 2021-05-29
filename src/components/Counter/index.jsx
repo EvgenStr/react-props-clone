@@ -5,10 +5,10 @@ import style from "./Counter.module.scss";
 function Counter() {
   const [counter, setCounter] = useState(0);
   const [step, setStep] = useState(1);
-  const [direction, setDirection] = useState(true);
+  const [isIncrement, setIncrement] = useState(true);
   const [isAuto, setIsAuto] = useState(false);
   const autoClick = () => {
-    setCounter(counter + (direction ? step : -step));
+    setCounter(counter + (isIncrement ? step : -step));
   }
 
   useEffect(() => {
@@ -22,8 +22,8 @@ function Counter() {
   return (
     <div className={style.counter}>
       <h1>Counter: {counter}</h1>
-      <Controls setSteps={setStep} propStep={step} setDirection={setDirection} direction={direction} />
-      <button onClick={() => { setCounter(counter + (direction ? step : -step)) }}> Count</button>
+      <Controls setSteps={setStep} propStep={step} setDirection={setIncrement} direction={isIncrement} />
+      <button onClick={() => { setCounter(counter + (isIncrement ? step : -step)) }}> Count</button>
       <button onClick={() => { setIsAuto(!isAuto) }}> {isAuto && 'stop '}auto click </button>
 
     </div>
