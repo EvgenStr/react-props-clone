@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button';
 import Input from '../Input';
+import styles from './AutoControls.module.scss';
 
 function AutoControls({ handler, text, setFrequency, frequency }) {
   const minFrequency = 1;
@@ -13,7 +14,7 @@ function AutoControls({ handler, text, setFrequency, frequency }) {
   };
 
   return (
-    <div>
+    <div className={styles.autoControls}>
       <span>Set frequency from {minFrequency} to {maxFrequency}</span>
       <Input value={frequency} handler={setFrequencyToParent} />
       <Button handler={handler} text={text} />

@@ -1,0 +1,4 @@
+@import "../../../common/templates.scss";
+.autoControls {
+  @extend %flex-column;
+}

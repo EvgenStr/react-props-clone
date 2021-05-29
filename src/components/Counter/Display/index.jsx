@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Display.module.scss';
 
 function Display({ counter }) {
   return (
-    <div>Counter: {counter}</div>
+    <div className={styles.display}>Counter: {counter}</div>
   );
 };
 export default Display;

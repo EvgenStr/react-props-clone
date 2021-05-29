@@ -1,0 +1,16 @@
+@import "../../../common/templates.scss";
+
+.inputNum {
+  font-family: sans-serif;
+  max-width: 5rem;
+  padding: .5rem;
+  border: solid #ddd;
+  border-width: 0 2px;
+  font-size: 2rem;
+  height: 3rem;
+  font-weight: bold;
+  text-align: center;
+  * {
+    box-sizing: border-box;
+  }
+}

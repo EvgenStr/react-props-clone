@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from "./Input.module.scss";
 
 function Input({ handler, value }) {
   return (
-    <div>
-      <input type="number" value={value} onChange={(e) => { handler(e) }} />
-    </div>
+    <input className={styles.inputNum} type="number" value={value} onChange={(e) => { handler(e) }} />
   );
 };
 export default Input;

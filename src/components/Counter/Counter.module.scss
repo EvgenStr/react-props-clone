@@ -1,5 +1,8 @@
+@import "../../common/templates.scss";
 .counter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 500px;
+  margin: 0 auto;
+  border: 1px solid green;
+  margin-top: 15px;
+  @extend %flex-column;
 }

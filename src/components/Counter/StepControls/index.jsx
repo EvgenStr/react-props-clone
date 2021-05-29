@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button';
 import Input from '../Input';
-import styles from "./Controls.module.scss"
+import styles from "./StepControls.module.scss"
 
 function StepControls({ setStep, step, setDirection, isIncrement }) {
 

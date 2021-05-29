@@ -29,22 +29,22 @@ const usersDB = [
 ];
 
 function App(props) {
-  const defaultUsers = usersDB.map((user) => ({
-    ...user,
-    isSelected: false,
-  }));
-  const [users, setUsers] = useState(defaultUsers);
-  const [isHidden, setIsHidden] = useState(false);
-  const hideHandler = () => setIsHidden(!isHidden);
+  // const defaultUsers = usersDB.map((user) => ({
+  //   ...user,
+  //   isSelected: false,
+  // }));
+  // const [users, setUsers] = useState(defaultUsers);
+  // const [isHidden, setIsHidden] = useState(false);
+  // const hideHandler = () => setIsHidden(!isHidden);
   return (
     <>
-      <header>
+      {/* <header>
         <SelectedUserList users={users} />
-      </header>
+      </header> */}
       <main>
-        <button onClick={hideHandler}>Hide</button>
+        {/* <button onClick={hideHandler}>Hide</button>
         {!isHidden && <UserList users={users} setUsers={setUsers} />}
-        <Timer />
+        <Timer /> */}
         <Counter />
       </main>
     </>
