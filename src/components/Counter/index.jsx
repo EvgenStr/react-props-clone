@@ -26,7 +26,7 @@ function Counter() {
       <Display counter={counter} />
       <StepControls setSteps={setStep} propStep={step} setDirection={setIncrement} direction={isIncrement} />
       <Button handler={() => { setCounter(counter + (isIncrement ? step : -step)) }} text="Count" />
-      <Button handler={() => { setIsAuto(!isAuto) }} text={`${isAuto && 'stop'} auto click`} />
+      <Button handler={() => { setIsAuto(!isAuto) }} text={(isAuto ? 'stop' : 'start') + ' auto click'} />
     </div>
   )
 }
