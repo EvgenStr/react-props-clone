@@ -1,7 +1,6 @@
 import React from 'react'
 
-function Button(props) {
-  const { handler, text } = props;
+function Button({ handler, text }) {
   return (
     <button onClick={handler}>{text}</button>
   )

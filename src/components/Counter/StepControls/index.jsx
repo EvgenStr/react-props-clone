@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../Button';
+import Input from '../Input';
 import styles from "./Controls.module.scss"
 
 function Controls(props) {
@@ -19,7 +20,8 @@ function Controls(props) {
   }
   return (
     <div className={styles.controls}>
-      <input type="number" value={step} onChange={setStepToParent} />
+    <Input value={step} handler={setStepToParent} />
+
       <Button handler={changeDirection} text="Change direction" />
     </div>
   )

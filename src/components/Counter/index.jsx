@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import StepControls from "./StepControls";
 import Button from "./Button";
 import Display from './Display';
+import AutoControls from './AutoControls';
 import style from "./Counter.module.scss";
 
 function Counter() {
@@ -9,6 +10,7 @@ function Counter() {
   const [step, setStep] = useState(1);
   const [isIncrement, setIncrement] = useState(true);
   const [isAuto, setIsAuto] = useState(false);
+  const [frequency, setFrequency] = useState(1)
   const autoClick = () => {
     setCounter(counter + (isIncrement ? step : -step));
   }
@@ -16,17 +18,18 @@ function Counter() {
   useEffect(() => {
     let interval = null;
     if (isAuto) {
-      interval = setInterval(autoClick, 1000)
+      interval = setInterval(autoClick, 1000 / frequency);
     }
     return () => { clearInterval(interval) }
-  }, [isAuto, counter])
+  }, [isAuto, counter, frequency])
 
   return (
     <div className={style.counter}>
       <Display counter={counter} />
       <StepControls setSteps={setStep} propStep={step} setDirection={setIncrement} direction={isIncrement} />
       <Button handler={() => { setCounter(counter + (isIncrement ? step : -step)) }} text="Count" />
-      <Button handler={() => { setIsAuto(!isAuto) }} text={(isAuto ? 'stop' : 'start') + ' auto click'} />
+      <AutoControls handler={() => { setIsAuto(!isAuto) }} text={(isAuto ? 'stop' : 'start') + ' auto click'} setFrequency={setFrequency} frequency={frequency} />
+
     </div>
   )
 }
