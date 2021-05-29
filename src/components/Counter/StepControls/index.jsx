@@ -3,8 +3,7 @@ import Button from '../Button';
 import Input from '../Input';
 import styles from "./Controls.module.scss"
 
-function Controls(props) {
-  const { setSteps, propStep, setDirection, direction } = props;
+function Controls({ setSteps, propStep, setDirection, direction }) {
   const [step, setStep] = useState(propStep);
 
   const setStepToParent = ({ target: { value } }) => {
@@ -12,18 +11,19 @@ function Controls(props) {
     setStep(validStep);
     setSteps(validStep);
   };
+
   const changeDirection = () => {
     setDirection(!direction);
     setStep(step)
     setSteps(step);
+  };
 
-  }
   return (
     <div className={styles.controls}>
-    <Input value={step} handler={setStepToParent} />
+      <Input value={step} handler={setStepToParent} />
 
       <Button handler={changeDirection} text="Change direction" />
     </div>
-  )
+  );
 }
 export default Controls;

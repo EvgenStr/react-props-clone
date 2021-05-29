@@ -10,18 +10,19 @@ function Counter() {
   const [step, setStep] = useState(1);
   const [isIncrement, setIncrement] = useState(true);
   const [isAuto, setIsAuto] = useState(false);
-  const [frequency, setFrequency] = useState(1)
+  const [frequency, setFrequency] = useState(1);
+
   const autoClick = () => {
     setCounter(counter + (isIncrement ? step : -step));
-  }
+  };
 
   useEffect(() => {
     let interval = null;
     if (isAuto) {
       interval = setInterval(autoClick, 1000 / frequency);
-    }
-    return () => { clearInterval(interval) }
-  }, [isAuto, counter, frequency])
+    };
+    return () => { clearInterval(interval) };
+  }, [isAuto, counter, frequency]);
 
   return (
     <div className={style.counter}>
@@ -29,8 +30,7 @@ function Counter() {
       <StepControls setSteps={setStep} propStep={step} setDirection={setIncrement} direction={isIncrement} />
       <Button handler={() => { setCounter(counter + (isIncrement ? step : -step)) }} text="Count" />
       <AutoControls handler={() => { setIsAuto(!isAuto) }} text={(isAuto ? 'stop' : 'start') + ' auto click'} setFrequency={setFrequency} frequency={frequency} />
-
     </div>
-  )
-}
+  );
+};
 export default Counter;

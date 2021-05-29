@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 function Display({ counter }) {
   return (
     <div>Counter: {counter}</div>
-  )
-}
+  );
+};
 export default Display;
