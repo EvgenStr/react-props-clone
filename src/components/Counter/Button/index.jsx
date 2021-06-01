@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from "./Button.module.scss";
 
 function Button({ handler, text }) {
   return (
-    <button onClick={handler}>{text}</button>
+    <button className={styles.button} onClick={handler}>{text}</button>
   );
 };
 export default Button;
-console.log("test");
 
 Button.propTypes = {
   handler: PropTypes.func.isRequired,
